@@ -8,7 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RegisterController: UIViewController {
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+
+    @IBAction func registerAccount(_ sender: Any) {
+    }
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
