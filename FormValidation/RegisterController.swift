@@ -20,9 +20,7 @@ class RegisterController: UIViewController {
                            phone: phoneTextField.text)
         let result = validator.check()
         if result.isValid == false, let message = result.message {
-            let controller = UIAlertController(title: "", message: message, preferredStyle: .alert)
-            controller.addAction(UIAlertAction(title: "OK", style: .default))
-            present(controller, animated: true)
+            showMessage(message: message)
             return
         }
 
@@ -31,8 +29,16 @@ class RegisterController: UIViewController {
                         phone: validator.phone!)
     }
 
+    func showMessage(message: String) {
+        let controller = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        controller.addAction(UIAlertAction(title: "OK", style: .default))
+        present(controller, animated: true)
+        return
+    }
+
     func callRegisterApi(email: String, password: String, phone: String) {
         // run api here
+        showMessage(message: "Api calling. Give me seconds")
     }
 
 
