@@ -15,11 +15,13 @@ class RegisterController: UIViewController {
 
     var validator = Validator()
     @IBAction func registerAccount(_ sender: Any) {
-        validator.setValue(email: emailTextField.text,
-                           password: passwordTextField.text,
-                           phone: phoneTextField.text)
+        validator.setFactors(email: emailTextField,
+                           password: passwordTextField,
+                           phone: phoneTextField)
         let result = validator.check()
         if result.isValid == false, let message = result.message {
+            result.textField?.becomeFirstResponder()
+            result.textField?.shake()
             showMessage(message: message)
             return
         }

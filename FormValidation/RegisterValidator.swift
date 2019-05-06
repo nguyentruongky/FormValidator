@@ -11,50 +11,80 @@ extension RegisterController {
     struct ValidatorResult {
         var isValid = true
         var message: String?
+        var textField: UITextField?
     }
     struct Validator {
-        var email: String?
-        var password: String?
-        var phone: String?
-        mutating func setValue(email: String?, password: String?, phone: String?) {
-            self.email = email
-            self.password = password
-            self.phone = phone
+        var email: String? {
+            return emailTextField?.text
+        }
+        var password: String? {
+            return passwordTextField?.text
+        }
+        var phone: String? {
+            return phoneTextField?.text
+        }
+
+        private var emailTextField: UITextField?
+        private var passwordTextField: UITextField?
+        private var phoneTextField: UITextField?
+
+        mutating func setFactors(email: UITextField, password: UITextField, phone: UITextField) {
+            self.emailTextField = email
+            self.passwordTextField = password
+            self.phoneTextField = phone
         }
         func check() -> ValidatorResult {
             guard let email = email else {
-                return ValidatorResult(isValid: false, message: "Email can't be empty")
+                return ValidatorResult(isValid: false,
+                                       message: "Email can't be empty",
+                                       textField: emailTextField)
             }
 
             if email.isEmpty == true {
-                return ValidatorResult(isValid: false, message: "Email can't be empty")
+                return ValidatorResult(isValid: false,
+                                       message: "Email can't be empty",
+                                       textField: emailTextField)
             }
 
             if email.isValidEmail() == false {
-                return ValidatorResult(isValid: false, message: "Invalid email")
+                return ValidatorResult(isValid: false,
+                                       message: "Invalid email",
+                                       textField: emailTextField)
             }
 
             guard let password = password else {
-                return ValidatorResult(isValid: false, message: "Password can't be empty")
+                return ValidatorResult(isValid: false,
+                                       message: "Password can't be empty",
+                                       textField: passwordTextField)
             }
 
             if password.isEmpty == true {
-                return ValidatorResult(isValid: false, message: "Password can't be empty")
+                return ValidatorResult(isValid: false,
+                                       message: "Password can't be empty",
+                                       textField: passwordTextField)
             }
 
             if password.count < 6 {
-                return ValidatorResult(isValid: false, message: "Password must have at least 6 characters")
+                return ValidatorResult(isValid: false,
+                                       message: "Password must have at least 6 characters",
+                                       textField: passwordTextField)
             }
 
             guard let phone = phone else {
-                return ValidatorResult(isValid: false, message: "Phone can't be empty")
+                return ValidatorResult(isValid: false,
+                                       message: "Phone can't be empty",
+                                       textField: phoneTextField)
             }
 
             if phone.isEmpty == true {
-                return ValidatorResult(isValid: false, message: "Phone can't be empty")
+                return ValidatorResult(isValid: false,
+                                       message: "Phone can't be empty",
+                                       textField: phoneTextField)
             }
 
-            return ValidatorResult(isValid: true, message: nil)
+            return ValidatorResult(isValid: true,
+                                   message: nil,
+                                   textField: nil)
         }
     }
 }
@@ -65,5 +95,15 @@ extension String {
 
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
+    }
+}
+
+extension UIView {
+    func shake() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.duration = 0.6
+        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
+        layer.add(animation, forKey: "shake")
     }
 }
