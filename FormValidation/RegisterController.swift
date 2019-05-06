@@ -13,7 +13,26 @@ class RegisterController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
 
+    var validator = Validator()
     @IBAction func registerAccount(_ sender: Any) {
+        validator.setValue(email: emailTextField.text,
+                           password: passwordTextField.text,
+                           phone: phoneTextField.text)
+        let result = validator.check()
+        if result.isValid == false, let message = result.message {
+            let controller = UIAlertController(title: "", message: message, preferredStyle: .alert)
+            controller.addAction(UIAlertAction(title: "OK", style: .default))
+            present(controller, animated: true)
+            return
+        }
+
+        callRegisterApi(email: validator.email!,
+                        password: validator.password!,
+                        phone: validator.phone!)
+    }
+
+    func callRegisterApi(email: String, password: String, phone: String) {
+        // run api here
     }
 
 

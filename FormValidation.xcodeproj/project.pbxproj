@@ -12,6 +12,7 @@
 		2643F0DF227EA1240068DFB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2643F0DD227EA1240068DFB0 /* Main.storyboard */; };
 		2643F0E1227EA1260068DFB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2643F0E0227EA1260068DFB0 /* Assets.xcassets */; };
 		2643F0E4227EA1260068DFB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2643F0E2227EA1260068DFB0 /* LaunchScreen.storyboard */; };
+		2643F121227F84C10068DFB0 /* RegisterValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643F120227F84C10068DFB0 /* RegisterValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2643F0E0227EA1260068DFB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2643F0E3227EA1260068DFB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2643F0E5227EA1260068DFB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2643F120227F84C10068DFB0 /* RegisterValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				2643F0D9227EA1240068DFB0 /* AppDelegate.swift */,
 				2643F0DB227EA1240068DFB0 /* RegisterController.swift */,
+				2643F120227F84C10068DFB0 /* RegisterValidator.swift */,
 				2643F0DD227EA1240068DFB0 /* Main.storyboard */,
 				2643F0E0227EA1260068DFB0 /* Assets.xcassets */,
 				2643F0E2227EA1260068DFB0 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				2643F0DC227EA1240068DFB0 /* RegisterController.swift in Sources */,
 				2643F0DA227EA1240068DFB0 /* AppDelegate.swift in Sources */,
+				2643F121227F84C10068DFB0 /* RegisterValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
